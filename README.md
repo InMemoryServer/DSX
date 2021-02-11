@@ -36,9 +36,9 @@
 
 ###### 4.1 <a href="DSXTree">DSX 树</a>
 
-###### 4.2 <span id="FirstNode">左子树模型</span>
+###### 4.2 <a href="FirstNode">左子树模型</a>
 
-###### 4.3 <span id="SecondaryNode">右子树模型</span>
+###### 4.3 <a href="SecondaryNode">右子树模型</a>
 
 ###### 4.4 <span id="suggestion">建议</span>
 
