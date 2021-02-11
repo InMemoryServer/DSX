@@ -8,7 +8,11 @@
 
 ###### 	1. <a href="#intro">简介</a> 
 
-###### 	2. <a href="install">安装</a>
+###### 2. <a href="prepare">准备</a>
+
+###### 2.1. <a href="install">安装</a>
+
+#### 2.2. <a href="property">配置</a>
 
 ###### 3. <a href="usage">用法</a>
 
@@ -29,6 +33,14 @@
 ###### 3.8 <a href="#yafolding">yafolding 代码折叠（可选）</a>
 
 ###### 	4. <a href="theory">原理</a>
+
+###### 4.1 <a href="DSXTree">DSX 树</a>
+
+###### 4.2 <span id="FirstNode">左子树模型</span>
+
+###### 4.3 <span id="SecondaryNode">右子树模型</span>
+
+###### 4.4 <span id="suggestion">建议</span>
 
 ###### 5. <a href="#history">历史</a>
 
@@ -58,7 +70,9 @@ M-x fe--D ;; alias -> ANY-find-file ~/.emacs.d/init.el
 
 ---
 
-#### 2.  <span id="install">安装</span>
+#### 2. <span id="prepare">准备</span>
+
+###### 2.1  <span id="install">安装</span>
 
 a. 切换到 emacs 的家目录， 创建 site-lisp 目录， 并且通过 git 工具克隆 ：
 
@@ -66,15 +80,26 @@ a. 切换到 emacs 的家目录， 创建 site-lisp 目录， 并且通过 git �
 cd ~/.emacs.d/ # change to emacs home directory
 mkdir site-lisp
 cd site-lisp
-git clone https://github.com/DSX.git # clone to site-lisp
+git clone https://github.com/WolfBridge210/DSX.git # clone to site-lisp
 ```
 
  b. 编辑 ~/.emacs.d/init.el 文件， 启动 <font color="RED">D</font><font color="ORANGE">S</font><font color="BLUE">X</font> 设计方案 ：
 
 ```lisp
+(add-to-list 'load-path "~/.emacs.d/site-lisp/")
 (require 'DSX) ;; launch DSX
 (DSX-mode)
 ```
+
+---
+
+###### 2.2 <span id="property">配置</span>
+
+a. 编辑 ~/.emacs.d/site-lisp/DSX.el
+
+b. 根据以下[3. 用法]，选择取消指定的注释
+
+c. 保存
 
 ---
 
@@ -198,30 +223,58 @@ git clone https://github.com/DSX.git # clone to site-lisp
 ff-EOF ;; alias -> ido-find-file
 ```
 
-<img src="ff-EOF.png" alt="ff-EOF.png" style="zoom:200%;" />
+---
 
-​    a. 这是 FirstNode 即左子树, ' . ' 是 Root， ' ff ' 是 Node，' EOF ' 是 Sentry。其中，首部 Root 不需要写出，
+###### 4.1 <span id="DSXTree"><font color="RED">D</font><font color="ORANGE">S</font><font color="BLUE">X</font> 树</span>
 
-是逻辑上源的存在；节点 Node 必须要两个字符表示， 是指令语义存在； 尾部必须添加哨兵 EOF， 作为缺失叶子时， 
+a. Root 首部是逻辑上源的存在，表示从属关系。在定义时不需要写出。
 
-充当闭合 <font color="RED">D</font><font color="ORANGE">S</font><font color="BLUE">X</font> 树存在；单一字符的叶子 Leaf， 也是直观表示语义、行为， 以及闭合 <font color="RED">D</font><font color="ORANGE">S</font><font color="BLUE">X</font> 树。
+b. Node 中间节点是指令的语义类别， 必须由两个字符构成。
+
+c. Leaf 子叶是指令的特别行为， 必须由单个字符构成。
+
+d. Sentry 哨兵是当没有子叶时，充当闭合 <font color="RED">D</font><font color="ORANGE">S</font><font color="BLUE">X</font> 树存在，由 EOF 构成。
+
+e. Symbol 连接符是以上的连接纽带，由被允许的连接符所构成，默认为下划线、中划线。
+
+![](ffEOF.png)
+
+![](fe1D.png)
+
+如上图，' . ' 是 Root， ' ff ' 是 Node，' EOF ' 是 Sentry；' fe ' 是 Node，' D ' 是子叶。
+
+---
+
+###### 4.2 <span id="FirstNode">左子树模型</span>
+
+ 	a. 它是命令的主要形成模型，由连串的符号表示，当敲击命令时将会显现，简记 FirstNode。  
+
+​    b. 连接符不重复。
+
+<img src="firstnode.png" alt="firstnode.png"/>   
+
+---
+
+###### 4.3 <span id="SecondaryNode">右子树模型</span>
+
+​	a. 它是左子树模型的辅助模型，当左子树不充分表达其他命令时，绑定到右子树，简记 SecondaryNode。
+
+​	b. 连接符重复，但只能一次，即维护二叉树理论。
 
 ```lisp
 fe-D ;; alias -> ido-find-file ~/.emacs.d/init.el
 fe--D ;; alias -> ANY-find-file ~/.emacs.d/init.el
 ```
 
+![](secondarynode.png)
 
+<img src="fe2D.PNG" />
 
-<img src="fe--D.PNG" style="zoom:200%;" />
+  如上图，' . ' 是 Root， ' fe ' 是 Node，' -D ' 是 SecondaryNode Leaf。
 
-​    b. ' fe-D ' 即 FirstNode, 是指令的主体存在, 而 ' fe--D ' 即 SecondaryNode，是辅助形式存在。当 FirstNode
+###### 4.4 <span id="suggestion">建议</span>
 
-不充分时添加，' fe-D ' 指向 emacs 的 init 文件， ' fe--D ' 可以指向用户的临时文件，但必须最后依然形成完整
-
-的 <font color="RED">D</font><font color="ORANGE">S</font><font color="BLUE">X</font> 二叉树。
-
-​    c. 建议：<font color="RED">D</font><font color="ORANGE">S</font><font color="BLUE">X</font>树的节数维持在 4 ~ 5 最好，其中仅包含 第 5 节尾部为哨兵的。 
+​	<font color="RED">D</font><font color="ORANGE">S</font><font color="BLUE">X</font> 树的节数维持在 4 ~ 5 最好，其中仅包含 第 5 节尾部为哨兵的。 
 
 ---
 
