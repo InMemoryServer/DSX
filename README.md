@@ -245,6 +245,8 @@ e. Symbol Connector is the above link, which is made up of allowed connectors. T
 
 <img src="DSXtree.png" />
 
+![我](C:\Users\Administrator\Documents\DSX\DSXtree.png)
+
 Above，' . ' is Root， ' ff ' is Node，' EOF ' is Sentry；' fe ' is Node，' D ' is cotyledon。
 
 ---
