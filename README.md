@@ -239,11 +239,11 @@ d. Sentry Sentry is used as a closure when there are no cotyledons <font color="
 
 e. Symbol Connector is the above link, which is made up of allowed connectors. The default is underline and middle dash.
 
-![](ffEOF.png)
+<img src="ffEOF.png" />
 
-![](fe1D.png)
+<img src="fe1D.png" />
 
-![](DSXtree.png)
+<img src="DSXtree.png" />
 
 Above，' . ' is Root， ' ff ' is Node，' EOF ' is Sentry；' fe ' is Node，' D ' is cotyledon。
 
@@ -255,9 +255,9 @@ Above，' . ' is Root， ' ff ' is Node，' EOF ' is Sentry；' fe ' is Node，'
 
 ​    b. Connector do not repeat。
 
-<img src="firstnode.png" alt="firstnode.png"/>   
+<img src="firstnode.png"/>   
 
-![](firstnodetree.png)
+<img src="firstnodetree.png"/>
 
 ---
 
@@ -272,11 +272,11 @@ fe-D ;; alias -> ido-find-file ~/.emacs.d/init.el
 fe--D ;; alias -> ANY-find-file ~/.emacs.d/init.el
 ```
 
-![](secondarynode.png)
+<img src="secondarynode.png"/>
 
-![](fe2D.png)
+<img src="fe2D.png"/>
 
-![](secondarynodetree.png)
+<img src="secondarynodetree.png"/>
 
   Above，' . ' is Root， ' fe ' is Node，' -D ' is SecondaryNode Leaf。
 
