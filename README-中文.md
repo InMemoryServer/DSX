@@ -237,9 +237,11 @@ d. Sentry 哨兵是当没有子叶时，充当闭合 <font color="RED">D</font><
 
 e. Symbol 连接符是以上的连接纽带，由被允许的连接符所构成，默认为下划线、中划线。
 
-![](ffEOF.png)
+<img src="ffEOF.png" />
 
-![](fe1D.png)
+<img src="fe1D.png" />
+
+<img src="DSXtree.png" />
 
 如上图，' . ' 是 Root， ' ff ' 是 Node，' EOF ' 是 Sentry；' fe ' 是 Node，' D ' 是子叶。
 
@@ -251,7 +253,9 @@ e. Symbol 连接符是以上的连接纽带，由被允许的连接符所构成�
 
 ​    b. 连接符不重复。
 
-<img src="firstnode.png" alt="firstnode.png"/>   
+<img src="firstnode.png"/>
+
+   <img src="firstnodetree.png"/>
 
 ---
 
@@ -266,9 +270,11 @@ fe-D ;; alias -> ido-find-file ~/.emacs.d/init.el
 fe--D ;; alias -> ANY-find-file ~/.emacs.d/init.el
 ```
 
-![](secondarynode.png)
+<img src="secondarynode.png"/>
 
 <img src="fe2D.PNG" />
+
+<img src="secondarynodetree.png"/>
 
   如上图，' . ' 是 Root， ' fe ' 是 Node，' -D ' 是 SecondaryNode Leaf。
 
