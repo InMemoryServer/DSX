@@ -93,7 +93,7 @@ git clone https://github.com/WolfBridge210/DSX.git # clone to site-lisp
 
 ---
 
-###### 2.2 <span id="property">配置</span>
+###### 2.2 <span id="property">Property</span>
 
 a. Edit ~/.emacs.d/site-lisp/DSX.el
 
@@ -103,7 +103,7 @@ c. Save
 
 ---
 
-#### 3.  <span id="usage">用法</span>
+#### 3.  <span id="usage">Usage</span>
 
 Hit M-x，after typing the following command，then push &lt;TAB&gt;（suggestion）or
 
@@ -215,7 +215,7 @@ press &lt;ENTER&gt; ：
 
 ---
 
-#### 4.  <span id="theory">原理</span>
+#### 4.  <span id="theory">Theory</span>
 
    Its principle is similar to the red black tree, which is composed of root, node, leaf, sentry and symbol (connector). It is presented in the form of binary tree.
 
